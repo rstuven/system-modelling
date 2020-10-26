@@ -1,13 +1,35 @@
-# System Modelling
+# Molecule System Modelling
 
-Modelling of system architecture using cadCAD, Jupyter notebooks, and other simulation tools.
+Modelling of the [Molecule](https://github.com/BenSchZA/molecule-alpha) system architecture using cadCAD, Jupyter notebooks, and other simulation tools.
+
+![Molecule system architecture](./media/catalyst-architecture.png)
+
+## Setup
+
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -U pip
+pip install -r requirements.txt
+jupyter notebook
+```
 
 ## What is cadCAD?
 
 See https://github.com/BlockScience/cadCAD
 > cadCAD: a differential games based simulation software package for research, validation, and Computer Aided Design of economic systems
 
+## Objectives
+
+From cadCAD:
 > ...cadCAD allows us to use code to help solidify our conceptualized ideas and run them to see if the outcome meets our expectations. We can then iteratively refine our work until we have constructed a model that closely reflects reality at the start of the model, and see how it evolves. We can then use these results to inform business decisions.
+
+Our objective is to:
+
+1. Identify modules of the Molecule system that can benefit from being modelled, simulated, and designed.
+2. Extract these modules and create the basic logical building blocks needed.
+3. Optimize the system using an agile feedback loop.
+4. Use these insights to implement a more informed, better designed, system.
 
 ## Methodology
 
@@ -30,32 +52,37 @@ For the first time we have the opportunity to create small markets where we reta
 * https://economics.stackexchange.com/questions/12709/does-control-system-engineering-have-a-place-in-economics
 * https://quant.stackexchange.com/questions/17825/application-of-control-theory-in-quantitative-finance
 
-## Deploying Jupyter Lab with cadCAD (Docker or Nix)
+## Plan of Development
 
-**FIRST** export the following environment variables:
-1. Only if you plan on using a remote Docker registry: `export JUPYTER_LAB_IMAGE=_YOUR_IMAGE_NAME_HERE_`
-2. `export CADCAD_KEY=_YOUR_KEY_HERE_`
+### Blackbox Components
 
-**THEN**
+The components defined in the system diagram that could be simulated and optimized using cadCAD, and broken down further if necessary.
 
-1. `cd jupyter-lab-environment`
-2. `docker-compose up --build`
+1. Approval registry
+2. Public market
+3. Bounty system
+4. Funding pool
+5. Governance
 
-**OR** if you're in a Unix environment
+### State Variables
 
-1. `cd jupyter-lab-environment`
-2. Install Nix: `curl https://nixos.org/nix/install | sh`
-3. Install Cachix: `nix-env -iA cachix -f https://cachix.org/api/v1/install`
-4. `cachix use linum-jupyter-lab && cachix use jupyterwith`
-5. `./install-venv.sh`
-5. `./start.sh`
+These are some of the variables that would be in the system state, that we have some form of control over.
 
-**NB** for both of the above methods, make sure to include the following two lines in your notebook to import the Python dependancies:
+1. Creator escrow
+2. Vesting period
+3. Max token supply & max collateral pool
+4. Curve type
+5. Curve taxation
+6. Funding rounds
 
-```
-import sys
-sys.path.append("../lib/python3.7/site-packages")
-```
+### Potential Applications
+
+Based on specific Molecule use cases and seeing what’s possible from previous cadCAD examples, here are a few applications:
+
+1. Bonding curve risk thresholds & analysis
+2. Application of robust control to bonding curve design
+3. Resilience to bot trading & black swan events
+4. Approval registry incentive optimization
 
 ## Relevant Resources
 
